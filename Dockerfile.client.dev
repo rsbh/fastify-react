@@ -1,0 +1,11 @@
+FROM node:18
+WORKDIR /app
+
+COPY ./client/package.json ./
+COPY ./client/yarn.lock ./
+
+RUN yarn
+COPY ./client .
+
+EXPOSE 3000
+CMD ["npm", "start"]

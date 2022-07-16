@@ -9,3 +9,11 @@ services:
       - ./server/src:/app/src
     ports:
       - "8000:8000"
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client.dev
+    volumes:
+      - ./client/src:/app/src
+    ports:
+      - "3000:3000"
