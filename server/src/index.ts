@@ -1,12 +1,16 @@
 import fastify from "fastify";
 
 const server = fastify();
+const PORT = process.env.PORT ? Number(process.env.PORT) : 8000;
+const HOST = process.env.HOST || "0.0.0.0";
 
-server.get("/ping", async (request, reply) => {
-  return "pong\n";
+server.get("/api/ping", async (request, reply) => {
+  return {
+    message: "pong",
+  };
 });
 
-server.listen({ port: 8080 }, (err, address) => {
+server.listen({ port: PORT, host: HOST }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
